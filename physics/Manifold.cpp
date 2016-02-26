@@ -25,6 +25,6 @@ void Manifold::applyInteractions(Body& objA, Body& objB) {
 
     if (colliding) {
         Impulse::resolveCollision(objA, objB, cData);
-        Impulse::positionalCorrection(objA, objB, cData);
+        //Impulse::positionalCorrection(objA, objB, cData);
     }
 }

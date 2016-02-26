@@ -18,7 +18,8 @@ public:
     Body(int);
     Body();
     void initializeObject();
-    
+
+    Vect relPos;
     Vect vel;
     Vect angVel;
     Vect force;

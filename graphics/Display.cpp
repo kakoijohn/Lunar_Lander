@@ -11,7 +11,7 @@
 bool Display::remainingEvents;
 
 Display::Display(int width, int height) {
-    FPS = 120;
+    FPS = 60;
     ticksPerFrame = 1000 / FPS;
     createWindow(width, height);
 }
@@ -75,7 +75,7 @@ void Display::createWindow(int width, int height) {
         avgFPS = countedFrames / ((SDL_GetTicks() - fpsTimer) / 1000.f);
         if (avgFPS > 2000000)
             avgFPS = 0;
-        if (printTicks++ >= 60) {
+        if (printTicks++ >= FPS) {
             std::cout << "FPS: " << avgFPS << "\n";
             printTicks = 0;
         }

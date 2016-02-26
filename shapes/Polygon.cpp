@@ -81,8 +81,6 @@ Vect Polygon::centroid() {
     Cx = Cx / this->size();
     Cy = Cy / this->size();
 
-    printf("%f, %f\n", Cx, Cy);
-
     return {Cx, Cy};
 }
 
@@ -93,16 +91,12 @@ void Polygon::pollEvents() {
             if (events.at(i).identifier == polygon_drag_start) {
                 oMousePos = {events.at(i).x, events.at(i).y};
                 oPolyPos = this->at(0);
-                return;
             } else if (events.at(i).identifier == polygon_move) {
                 set({(events.at(i).x - oMousePos.x) + oPolyPos.x, (events.at(i).y - oMousePos.y) + oPolyPos.y});
-                return;
             } else if (events.at(i).identifier == polygon_rotate_right) {
-                rotate(.1, centroid());
-                return;
+                rotate(.25, centroid());
             } else if (events.at(i).identifier == polygon_rotate_left) {
-                rotate(-.1, centroid());
-                return;
+                rotate(-.25, centroid());
             }
         }
     }
