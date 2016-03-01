@@ -12,8 +12,9 @@ rapidjson::Document InputEvent::KeyBindings;
 std::vector<eventData> InputEvent::events;
 
 void InputEvent::EventFilter(SDL_Event* event) {
+    clearActive();
     if (!events.empty())
-        for (int i = 0; i < events.size(); i++)
+        for (int i = 0; i < (int) events.size(); i++)
             if (event->type == events.at(i).key_binding)
                 checkEvent(events.at(i), event);
 }
@@ -51,20 +52,20 @@ void InputEvent::addActiveEvent(eventData& data, SDL_Event* event) {
 
     data.active = true;
 
-    data.clicks = event->button.clicks;
-
-    data.x = event->motion.x * data.normalization;
-    data.y = event->motion.y * data.normalization;
-
-    data.xrel = event->motion.xrel * data.normalization;
-    data.yrel = event->motion.yrel * data.normalization;
-
-    data.xwheel = event->wheel.x * data.normalization;
-    data.ywheel = event->wheel.y * data.normalization;
+//    data.clicks = event->button.clicks;
+//
+//    data.x = event->motion.x * data.normalization;
+//    data.y = event->motion.y * data.normalization;
+//
+//    data.xrel = event->motion.xrel * data.normalization;
+//    data.yrel = event->motion.yrel * data.normalization;
+//
+//    data.xwheel = event->wheel.x * data.normalization;
+//    data.ywheel = event->wheel.y * data.normalization;
 }
 
 void InputEvent::clearActive() {
-    for (int i = 0; i < events.size(); i++)
+    for (int i = 0; i < (int) events.size(); i++)
         events.at(i).active = false;
 }
 
@@ -81,8 +82,8 @@ void InputEvent::loadState(const char* state) {
     const rapidjson::Value& currState = KeyBindings[state];
 
     events.resize(currState.Size());
-    SDL_Log("%d", currState.Size());
-    for (int i = 0; i < currState.Size(); i++) {
+    SDL_Log("%d User Events Loaded.", currState.Size());
+    for (int i = 0; i < (int) currState.Size(); i++) {
         const rapidjson::Value& event = currState[i];
         eventData& data = events.at(i);
 

@@ -13,17 +13,17 @@ Collision::Collision() {
 }
 
 bool Collision::isColliding(Polygon& shapeA, Polygon& shapeB) {
-    if (shapeA.size() > 1 && shapeB.size() > 1) {
+    if (shapeA.vertecies > 1 && shapeB.vertecies > 1) {
         float minOverlap = oneCollide(shapeA, shapeB).MTV;
         if (minOverlap <= 0)
             return false;
         minOverlap = fminf(minOverlap, oneCollide(shapeB, shapeA).MTV);
         if (minOverlap <= 0)
             return false;
-    } else if (shapeA.size() > 1 && shapeB.size() <= 1) {
+    } else if (shapeA.vertecies > 1 && shapeB.vertecies <= 1) {
         if (!isCollidingPoint(shapeB.at(0), shapeA))
             return false;
-    } else if (shapeB.size() > 1 && shapeA.size() <= 1) {
+    } else if (shapeB.vertecies > 1 && shapeA.vertecies <= 1) {
         if (!isCollidingPoint(shapeA.at(0), shapeB))
             return false;
     }
@@ -53,11 +53,11 @@ CollData Collision::oneCollide(Polygon& shapeA, Polygon& shapeB) {
     Vect collNormal;
     int collisionFace = 0;
 
-    for (int a = 0; a < shapeA.size(); a++) {
+    for (int a = 0; a < shapeA.vertecies; a++) {
         float Vx;
         float Vy;
         
-        if (a == shapeA.size() - 1) {
+        if (a == shapeA.vertecies - 1) {
             Vx = -(shapeA.at(a).y - shapeA.at(0).y);
             Vy = shapeA.at(a).x - shapeA.at(0).x;
         } else {
@@ -72,7 +72,7 @@ CollData Collision::oneCollide(Polygon& shapeA, Polygon& shapeB) {
         float TAmin = std::numeric_limits<float>::max();
         float TAmax = -TAmin;
         
-        for (int i = 0; i < shapeA.size(); i++) {
+        for (int i = 0; i < shapeA.vertecies; i++) {
             float TAv = (shapeA.at(i).x * Vx + shapeA.at(i).y * Vy) / (Vx * Vx + Vy * Vy);
             float TAvx = TAv * Vx;
             float TAvy = TAv * Vy;
@@ -86,7 +86,7 @@ CollData Collision::oneCollide(Polygon& shapeA, Polygon& shapeB) {
         float TBmin = std::numeric_limits<float>::max();
         float TBmax = -TBmin;
         
-        for (int i = 0; i < shapeB.size(); i++) {
+        for (int i = 0; i < shapeB.vertecies; i++) {
             float TBv = (shapeB.at(i).x * Vx + shapeB.at(i).y * Vy) / (Vx * Vx + Vy * Vy);
             float TBvx = TBv * Vx;
             float TBvy = TBv * Vy;
@@ -112,11 +112,11 @@ CollData Collision::oneCollide(Polygon& shapeA, Polygon& shapeB) {
 }
 
 bool Collision::isCollidingPoint(Vect& point, Polygon& shape) {
-    for (int a = 0; a < shape.size(); a++) {
+    for (int a = 0; a < shape.vertecies; a++) {
         float Vx;
         float Vy;
 
-        if (a == shape.size() - 1) {
+        if (a == shape.vertecies - 1) {
             Vx = -(shape.at(a).y - shape.at(0).y);
             Vy = shape.at(a).x - shape.at(0).x;
         } else {
@@ -127,7 +127,7 @@ bool Collision::isCollidingPoint(Vect& point, Polygon& shape) {
         float TAmin = std::numeric_limits<float>::max();
         float TAmax = -TAmin;
 
-        for (int i = 0; i < shape.size(); i++) {
+        for (int i = 0; i < shape.vertecies; i++) {
             float TAv = (shape.at(i).x * Vx + shape.at(i).y * Vy) / (Vx * Vx + Vy * Vy);
             float TAvx = TAv * Vx;
             float TAvy = TAv * Vy;
@@ -162,9 +162,9 @@ bool Collision::isCollidingMouse(Polygon& shape) {
 std::vector<Vect> Collision::findCollidingPoints(Polygon& shapeA, Polygon& shapeB) {
     std::vector<Vect> points(0);
 
-    for (int i = 0; i < shapeA.size(); i++) {
+    for (int i = 0; i < shapeA.vertecies; i++) {
         Polygon lineA(2);
-        if (i == shapeA.size() - 1 && shapeA.size() > 2) {
+        if (i == shapeA.vertecies - 1 && shapeA.vertecies > 2) {
             lineA[0] = shapeA[i];
             lineA[1] = shapeA[0];
         } else {
@@ -173,9 +173,9 @@ std::vector<Vect> Collision::findCollidingPoints(Polygon& shapeA, Polygon& shape
         }
 
         if (isColliding(lineA, shapeB)) {
-            for (int j = 0; j < shapeB.size(); j++) {
+            for (int j = 0; j < shapeB.vertecies; j++) {
                 Polygon lineB(2);
-                if (j == shapeB.size() - 1 && shapeB.size() > 2) {
+                if (j == shapeB.vertecies - 1 && shapeB.vertecies > 2) {
                     lineB[0] = shapeB[j];
                     lineB[1] = shapeB[0];
                 } else {

@@ -12,10 +12,6 @@ Body::Body(int vertecies) : Polygon(vertecies) {
     
 }
 
-Body::Body() : Polygon(0) {
-
-}
-
 void Body::initializeObject() {
     setArea();
     setMoment();
@@ -30,8 +26,8 @@ void Body::initializeObject() {
 void Body::setArea() {
     //http://mathworld.wolfram.com/PolygonArea.html
 
-    for (int i = 0; i < this->size(); i++) {
-        if (i == this->size() - 1)
+    for (int i = 0; i < vertecies; i++) {
+        if (i == vertecies - 1)
             area += this->at(i).x * this->at(0).y - this->at(0).x - this->at(i).y;
         else
             area += this->at(i).x * this->at(i + 1).y - this->at(i + 1).x - this->at(i).y;
@@ -43,8 +39,8 @@ void Body::setArea() {
 void Body::setMoment() {
     //http://en.wikipedia.org/wiki/Second_moment_of_area#Any_polygon
 
-    for (int i = 0; i < this->size(); i++) {
-        if (i == this->size() - 1)
+    for (int i = 0; i < vertecies; i++) {
+        if (i == vertecies - 1)
             moment += (this->at(i).x * this->at(0).y + 2 * this->at(0).x * this->at(0).y + this->at(0).x * this->at(i).y) * (this->at(i).x * this->at(0).y - this->at(0).x * this->at(i).y);
         else
             moment += (this->at(i).x * this->at(i + 1).y + 2 * this->at(i + 1).x * this->at(i + 1).y + this->at(i + 1).x * this->at(i).y) * (this->at(i).x * this->at(i + 1).y - this->at(i + 1).x * this->at(i).y);

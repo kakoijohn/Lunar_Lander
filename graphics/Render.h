@@ -13,9 +13,10 @@
 
 #include "iostream"
 
-#include "../physics/Manifold.h"
+#include "../shapes/Lander.h"
 
 #endif /* defined(__RPGGameEngine__Render__) */
+
 class Render {
 public:
 	Render();

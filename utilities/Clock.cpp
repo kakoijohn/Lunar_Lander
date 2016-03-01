@@ -8,17 +8,10 @@
 
 #include "Clock.h"
 
-Uint32 Clock::currTime;
 float Clock::deltaT;
-float Clock::timeStep;
 
 void Clock::start() {
-    currTime = SDL_GetTicks();
-}
-
-void Clock::tick() {
-    deltaT = ((SDL_GetTicks() - currTime) * .001f) * timeStep;
-    currTime = SDL_GetTicks();
+    deltaT = 1.0f / 60.0f;
 }
 
 float Clock::dt() {

@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "SDL2/SDL.h"
 
-#include "math.h"
+#include <cmath>
 
 #include "../events/InputEvent.h"
 #include "../events/Identifiers.h"
@@ -23,7 +23,6 @@
 class Polygon : public std::vector<Vect> {
 public:
     Polygon(int);
-    Polygon();
 
     void addVert(Vect);
 
@@ -37,7 +36,8 @@ public:
     void pollEvents();
     
     float rotation;
-private:
+
     Vect oPolyPos;
     Vect oMousePos;
+    float vertecies;
 };

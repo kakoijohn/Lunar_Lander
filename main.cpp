@@ -14,7 +14,7 @@
 #include "graphics/Display.h"
 
 int main(int argc, char** argv){
-    Display d(500, 500);
+    Display d(1000, 750);
     
     return 0;
 }

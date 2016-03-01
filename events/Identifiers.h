@@ -23,8 +23,21 @@ enum Identifiers:int {
 
     polygon_rotate_left,
 
+    //lander
+    lander_rotate_right_down = 100,
+
+    lander_rotate_right_up,
+
+    lander_rotate_left_down,
+
+    lander_rotate_left_up,
+
+    lander_rocket_down,
+
+    lander_rocket_up,
+
     //pause_menu
-    single_click,
+    single_click = 200,
 
     up,
 };

@@ -1,45 +1,89 @@
 {
     "default": [
+                 {
+                 "action": "polygon_drag_start",
+                 "identifier": 0,
+                 "key_binding": 1025,
+                 "normalization": 1,
+                 "modifier": 1
+                 },
+                 {
+                 "action": "polygon_move",
+                 "identifier": 1,
+                 "key_binding": 1024,
+                 "normalization": 1,
+                 "modifier": 1
+                 },
+                 {
+                 "action": "polygon_rotate_right",
+                 "identifier": 2,
+                 "key_binding": 768,
+                 "normalization": 1,
+                 "modifier": 1073741903
+                 },
+                 {
+                 "action": "polygon_rotate_left",
+                 "identifier": 3,
+                 "key_binding": 768,
+                 "normalization": 1,
+                 "modifier": 1073741904
+                 }
+                 ],
+    "lander": [
                 {
-                "action": "polygon_drag_start",
-                "identifier": 0,
-                "key_binding": 1025,
-                "normalization": 1,
-                "modifier": 1
-                },
-                {
-                "action": "polygon_move",
-                "identifier": 1,
-                "key_binding": 1024,
-                "normalization": 1,
-                "modifier": 1
-                },
-                {
-                "action": "polygon_rotate_right",
-                "identifier": 2,
+                "action": "lander_rotate_right_down",
+                "identifier": 100,
                 "key_binding": 768,
                 "normalization": 1,
                 "modifier": 1073741903
                 },
                 {
-                "action": "polygon_rotate_left",
-                "identifier": 3,
+                "action": "lander_rotate_right_up",
+                "identifier": 101,
+                "key_binding": 769,
+                "normalization": 1,
+                "modifier": 1073741903
+                },
+                {
+                "action": "lander_rotate_left_down",
+                "identifier": 102,
                 "key_binding": 768,
                 "normalization": 1,
                 "modifier": 1073741904
+                },
+                {
+                "action": "lander_rotate_left_up",
+                "identifier": 103,
+                "key_binding": 769,
+                "normalization": 1,
+                "modifier": 1073741904
+                },
+                {
+                "action": "lander_rocket_down",
+                "identifier": 104,
+                "key_binding": 768,
+                "normalization": 1,
+                "modifier": 1073741906
+                },
+                {
+                "action": "lander_rocket_up",
+                "identifier": 105,
+                "key_binding": 769,
+                "normalization": 1,
+                "modifier": 1073741906
                 }
                 ],
     "pause_menu": [
                    {
                    "action": "single_click",
-                   "identifier": 4,
+                   "identifier": 200,
                    "key_binding": 1025,
                    "normalization": 1,
                    "modifier": 1
                    },
                    {
                    "action": "up",
-                   "identifier": 5,
+                   "identifier": 201,
                    "key_binding": 771,
                    "normalization": 1,
                    "modifier": 119

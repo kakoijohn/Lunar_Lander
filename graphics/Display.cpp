@@ -39,15 +39,9 @@ void Display::createWindow(int width, int height) {
     render->init(window);
 
     //FPS
-    int countedFrames = 0;
     Uint32 fpsTimer = SDL_GetTicks();
-    Uint32 capTimer;
-    float avgFPS;
-    int frameTicks;
-    int printTicks = 0;
 
     //Global Clock
-    Clock::timeStep = 1;
     Clock::start();
 
     //Joysticks
@@ -58,10 +52,8 @@ void Display::createWindow(int width, int height) {
 	//display loop
     bool done = false;
     while (!done) {
-        Clock::tick();
-        capTimer = SDL_GetTicks();
+        fpsTimer = SDL_GetTicks();
 
-        InputEvent::clearActive();
         SDL_PumpEvents();
         while (SDL_PollEvent(&event)) {
             InputEvent::EventFilter(&event);
@@ -71,23 +63,12 @@ void Display::createWindow(int width, int height) {
             }
         }
 
-        //FPS stuff
-        avgFPS = countedFrames / ((SDL_GetTicks() - fpsTimer) / 1000.f);
-        if (avgFPS > 2000000)
-            avgFPS = 0;
-        if (printTicks++ >= FPS) {
-            std::cout << "FPS: " << avgFPS << "\n";
-            printTicks = 0;
-        }
-
         //Update Display
         render->updateDisplay();
 
-        //More FPS stuff
-        countedFrames++;
-        frameTicks = SDL_GetTicks() - capTimer;
-        if (frameTicks < ticksPerFrame)
-            SDL_Delay(ticksPerFrame - frameTicks);
+        fpsTimer = SDL_GetTicks() - fpsTimer;
+        if (fpsTimer < ticksPerFrame)
+            SDL_Delay(ticksPerFrame - fpsTimer);
     }
     
 	render->freeResources();
