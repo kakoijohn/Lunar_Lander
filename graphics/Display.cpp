@@ -25,7 +25,7 @@ void Display::createWindow(int width, int height) {
     SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
     
     //create window
-    SDL_Window *window = SDL_CreateWindow("RPG Game Engine", 4, 4, width, height, SDL_WINDOW_SHOWN);
+    SDL_Window *window = SDL_CreateWindow("Lunar Lander", 4, 4, width, height, SDL_WINDOW_SHOWN);
     if (window == 0)
         SDL_Quit();
 

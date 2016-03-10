@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#include "../physics/Manifold.h"
+#include "Manifold.h"
 
 #endif /* Lander_hpp */
 
@@ -22,10 +22,20 @@ public:
     void rocket();
     void rotate_right();
     void rotate_left();
+    void render(SDL_Renderer*);
+    bool hasLanded();
+    float getPoints();
 private:
+    void calculatePoints(int);
+    float points;
+
     float turnDregree;
     float fuel;
     float rocketForce;
+
+    float landSucVelRangeX;
+    float landSucVelRangeY;
+    float landSucRotRange;
 
     int rotate_right_on;
     int rotate_left_on;

@@ -18,9 +18,13 @@
 class Manifold {
 public:
     CollData cData;
+
     bool colliding;
 
     Manifold();
 
     void applyInteractions(Body&, Body&);
+    void interactionsLanderMoon(Body&, Body&);
+private:
+    bool oneCol;
 };

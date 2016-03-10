@@ -27,7 +27,6 @@ public:
     void addVert(Vect);
 
     void rotate(float, Vect);
-    void setRot(float, Vect);
     void move(Vect);
     void set(Vect);
     void resize(float);

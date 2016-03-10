@@ -13,7 +13,7 @@
 
 #include "iostream"
 
-#include "../shapes/Lander.h"
+#include "MoonSurface.h"
 
 #endif /* defined(__RPGGameEngine__Render__) */
 

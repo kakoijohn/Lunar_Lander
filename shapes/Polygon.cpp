@@ -19,7 +19,7 @@ void Polygon::addVert(Vect vert) {
 void Polygon::rotate(float rad, Vect point) {
     for (int i = 0; i < vertecies; i++) {
 //        printf("%f, %f\n", at(i).x, at(i).y);
-        float distance = sqrt(pow(point.x - at(i).x, 2) + pow(point.y - at(i).y, 2));
+        float distance = sqrtf(powf(point.x - at(i).x, 2) + powf(point.y - at(i).y, 2));
         float theta = atan2f((at(i).y - point.y), (at(i).x - point.x));
 
         theta += rad;
@@ -31,17 +31,6 @@ void Polygon::rotate(float rad, Vect point) {
 //    printf("\n");
 
     rotation += rad;
-}
-
-void Polygon::setRot(float rad, Vect point) {
-    for (int i = 0; i < vertecies; i++) {
-        float distance = sqrtf(powf((point.x - this->at(i).x), 2) + powf((point.y - this->at(i).y), 2));
-
-        this->at(i).x = point.x + distance * cosf(rad);
-        this->at(i).y = point.y + distance * sinf(rad);
-    }
-
-    rotation = rad;
 }
 
 void Polygon::move(Vect delta) {

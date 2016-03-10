@@ -58,6 +58,9 @@ void Impulse::resolveCollision(Body& objA, Body& objB, CollData& cData) {
 
     Vect impulse = {j * cData.normal.x, j * cData.normal.y};
 
+//    printf("%f, %f\n", cData.normal.x, cData.normal.y);
+//    printf("%f, %f\n\n", impulse.x, impulse.y);
+
     if (objA.mass != 0)
         objA.vel = {objA.vel.x - objA.invMass * impulse.x, objA.vel.y - objA.invMass * impulse.y};
     if (objB.mass != 0)

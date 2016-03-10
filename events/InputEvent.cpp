@@ -48,7 +48,7 @@ void InputEvent::checkEvent(eventData& data, SDL_Event* event) {
 }
 
 void InputEvent::addActiveEvent(eventData& data, SDL_Event* event) {
-    std::cout << "Event Handled: " << data.action << "\n";
+    //std::cout << "Event Handled: " << data.action << "\n";
 
     data.active = true;
 
