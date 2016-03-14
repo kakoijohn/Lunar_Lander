@@ -28,9 +28,10 @@ int Render::init(SDL_Window *window) {
 void Render::updateDisplay() {
     SDL_RenderClear(SDLRender);
 
-    if (man.colliding)
-        printf("%d has landed?\n", lander.hasLanded());
-    else {
+    if (man.colliding) {
+        printf("Landing Status: %d\n", lander.hasLanded());
+        printf("Fitness: %f\n", lander.getPoints());
+    } else {
         lander.pollEvents();
         man.interactionsLanderMoon(lander, moon);
     }

@@ -25,6 +25,7 @@ public:
     void render(SDL_Renderer*);
     bool hasLanded();
     float getPoints();
+    void reset();
 private:
     void calculatePoints(int);
     float points;

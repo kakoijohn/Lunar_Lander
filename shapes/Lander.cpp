@@ -125,14 +125,14 @@ bool Lander::hasLanded() {
     rotate_right_on = false;
     rocket_on = false;
 
-    printf("Vel: (%f, %f), Rotation: %f\n", vel.x, vel.y, rotation);
+//    printf("Vel: (%f, %f), Rotation: %f\n", vel.x, vel.y, rotation);
     if (vel.y <= landSucVelRangeY && vel.y >= -landSucVelRangeY)
         if (vel.x <= landSucVelRangeX && vel.x >= -landSucVelRangeX)
             if (rotation <= landSucRotRange && rotation >= -landSucRotRange) {
                 calculatePoints(1);
 
-                rotate(-rotation, centroid());
-                vel = {0.0f, 0.0f};
+                //rotate(-rotation, centroid());
+                //vel = {0.0f, 0.0f};
 
                 return true;
             }
@@ -142,15 +142,28 @@ bool Lander::hasLanded() {
 }
 
 void Lander::calculatePoints(int landStat) {
-    float total = landStat;
-    float multiplier;
-    if (landStat)
-        if (vel.x == 0)
-            multiplier += 10;
-        if (vel.y == 0)
-            multiplier += 10;
-        if (rotation == 0)
-            multiplier += 10;
+    points = landStat;
+
+    points -= std::abs(vel.x);
+    points -= std::abs(vel.y);
+    points -= std::abs(rotation);
+}
+
+float Lander::getPoints() {
+    if (points == 0) {
+        points -= std::abs(at(0).y);
+    }
+
+    return points;
+}
+
+void Lander::reset() {
+    set({200, 50});
+
+    rotate(-rotation, centroid());
+    vel = {0.0f, 0.0f};
+
+    points = 0;
 }
 
 void Lander::render(SDL_Renderer *SDLRender) {
