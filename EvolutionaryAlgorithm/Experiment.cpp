@@ -14,6 +14,26 @@ Experiment::Experiment(int size) : Population(size) {
     
 }
 
+void Experiment::calculateFitnesses() {
+    bool calculationInParallel = true;
+
+    if (calculationInParallel) {
+        expCopy = *this;
+
+        std::thread thread1(parallelCalculation, 0, getPopSize() / 2);
+        std::thread thread2(parallelCalculation, getPopSize() / 2, getPopSize());
+
+        thread1.join();
+        thread2.join();
+
+        *this = expCopy;
+    } else {
+        serialCalculation();
+    }
+    
+    setFittest();
+}
+
 void Experiment::parallelCalculation(int start, int finish) {
     Lander lander;
     MoonSurfaceSimple moon;
@@ -91,22 +111,3 @@ void Experiment::serialCalculation() {
     }
 }
 
-void Experiment::calculateFitnesses() {
-    bool calculationInParallel = true;
-
-    if (calculationInParallel) {
-        expCopy = *this;
-
-        std::thread thread1(parallelCalculation, 0, getPopSize() / 2);
-        std::thread thread2(parallelCalculation, getPopSize() / 2, getPopSize());
-
-        thread1.join();
-        thread2.join();
-
-        *this = expCopy;
-    } else {
-        serialCalculation();
-    }
-
-    setFittest();
-}

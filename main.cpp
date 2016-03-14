@@ -50,9 +50,9 @@ int main(int argc, char** argv){
 
     pop->freeResources();
     delete pop;
-    
 
-    //Display d(1001, 500);
-    
+
+//    Display d(1001, 500);
+
     return 0;
 }
